@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Qué día puedes?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <main class="pagina">
+        <section class="tarjeta" id="tarjeta-principal">
+            <div class="tarjeta-sparkle" aria-hidden="true"></div>
+           
+            <h1 class="tarjeta-titulo">¿Qué día puedes? 📅</h1>
+            
+            <div class="formulario-fecha">
+                <div class="badge-plan" id="badge-plan">
+                    <span class="badge-label">Plan elegido:</span>
+                    <span class="badge-valor" id="plan-texto">Cargando...</span>
+                </div>
+
+                <input type="date" min="2026-10-12" id="fecha-evento" name="fecha-evento" class="input-fecha">
+                
+                <button class="btn btn-si btn-mandar" id="btn-mandar" disabled>
+                    <span>Mandar </span>
+                </button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
