@@ -129,13 +129,13 @@ document.addEventListener('mousemove', (e) => {
     huirDelMouse(e.clientX, e.clientY);
 });
 
-// Eventos específicos para el botón que huye (si existe en la página actual)
+
 if (botonCorrelon) {
     botonCorrelon.addEventListener('mouseenter', (e) => {
         huirDelMouse(e.clientX, e.clientY);
     });
 
-    // Soporte para pantallas táctiles (móvil y tablet)
+    
     botonCorrelon.addEventListener('touchstart', (e) => {
         e.preventDefault();
         if (e.touches && e.touches[0]) {
@@ -146,7 +146,7 @@ if (botonCorrelon) {
         }
     }, { passive: false });
 
-    // Si intentan hacer clic (por ejemplo, con tabulador y teclado)
+   
     botonCorrelon.addEventListener('click', (e) => {
         e.preventDefault();
         huirDelMouse(e.clientX || (window.innerWidth / 2), e.clientY || (window.innerHeight / 2));
@@ -254,13 +254,13 @@ if (inputFecha && btnMandar) {
         btnMandar.disabled = true;
         btnMandar.innerHTML = '<span>Enviando... ⏳</span>';
 
-        // ── Enviar a FastAPI ──────────────────────────────────────
-        fetch('http://127.0.0.1:8000/api/guardar-cita', {
+        
+        fetch('/api/guardar-cita', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 plan: actividadGuardada,
-                fecha: valorFecha   // YYYY-MM-DD que MySQL entiende
+                fecha: valorFecha   
             })
         })
         .then(res => {
@@ -273,12 +273,12 @@ if (inputFecha && btnMandar) {
         })
         .catch(err => {
             console.warn('⚠️ No se pudo guardar en BD:', err.message);
-            // Muestra la tarjetica igual pero sin confirmación de BD
+            
             mostrarTarjetica(actividadGuardada, fechaFormateada, valorFecha, false, null);
         })
         .finally(() => {
             btnMandar.innerHTML = textoOriginalBtn;
-            // El botón queda desactivado para evitar doble envío
+            
         });
     });
 }
@@ -297,7 +297,7 @@ function mostrarTarjetica(plan, fechaFormateada, fechaRaw, guardadoEnBD, idBD) {
 
     const badgeDB = guardadoEnBD
         ? `<p class="resultado-badge-bd ok"> Guardado en la base de datos${idBD ? ` <span style="opacity:0.6;font-size:0.8rem">(ID: ${idBD})</span>` : ''}</p>`
-        : `<p class="resultado-badge-bd error">⚠️ Cita mostrada, pero no se pudo guardar en BD. ¿El servidor está corriendo?</p>`;
+        : `<p class="resultado-badge-bd error">⚠️ Cita mostrada, pero no se pudo guardar en BD. </p>`;
 
     tarjetica.innerHTML = `
         <div class="resultado-icono"></div>
